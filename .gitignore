@@ -1,5 +1,36 @@
+# Compilación de Maven
 target/
+HELP.md
+.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
 .idea/
 *.iml
+*.iws
+*.ipr
+
+# Eclipse / STS
+.classpath
+.project
+.settings/
+.factorypath
+.apt_generated
+.springBeans
+.sts4-cache
+
+# VS Code
+.vscode/
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+
+# Variables de entorno y logs
 .env
+*.log
+
+# Sistema operativo
 .DS_Store
+Thumbs.db
