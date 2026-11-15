@@ -98,6 +98,10 @@ Excepciones personalizadas: `ResourceNotFoundException` (404), `ConflictExceptio
 
 Explicación en [docs/middleware-aop.md](docs/middleware-aop.md) y [docs/bloqueante-vs-no-bloqueante.md](docs/bloqueante-vs-no-bloqueante.md).
 
+## Diagramas
+
+En [docs/diagramas](docs/diagramas/README.md) están la arquitectura en capas, el modelo entidad-relación, los estados de la orden de trabajo, el flujo del interceptor y el aspecto, y la comparación bloqueante vs. asíncrono.
+
 ## Cómo ejecutar
 
 **Requisitos:** Java 21 y Docker.
@@ -141,9 +145,9 @@ El resultado se ve en la pestaña **Actions** del repositorio.
 
 ## Integrantes – Grupo 13
 
+- Juan Sebastian Alcivar Lopez
 - Marcos Steban Bajaña Ruiz
-- Rosario
-- Luis
-- Sebas
+- Maria Rosario Chasi Cabascango
+- Luis Rolando Sangucho Tenorio
 
 La participación de cada integrante se puede ver en el historial de commits del repositorio.
