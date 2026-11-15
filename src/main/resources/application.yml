@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: api-mantenimiento
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/mantenimiento}
+    username: ${DB_USERNAME:mantenimiento}
+    password: ${DB_PASSWORD:mantenimiento}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+server:
+  port: ${SERVER_PORT:8080}
