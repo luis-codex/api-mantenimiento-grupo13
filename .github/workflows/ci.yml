@@ -9,7 +9,7 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Obtener el código
         uses: actions/checkout@v6
 
       - name: Configurar Java 21
@@ -19,16 +19,30 @@ jobs:
           distribution: temurin
           cache: maven
 
-      - name: Compilar y ejecutar verificaciones
+      - name: Dar permiso de ejecución a mvnw
+        run: chmod +x mvnw
+
+      - name: Compilar
+        run: ./mvnw -B -DskipTests compile
+
+      - name: Ejecutar pruebas
         run: ./mvnw -B verify
+
+      - name: Guardar reportes de pruebas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reportes-pruebas
+          path: target/surefire-reports/
+          if-no-files-found: ignore
 
       - name: Reportar resultado
         if: always()
         run: |
           if [ "${{ job.status }}" = "success" ]; then
             echo "## CI: éxito" >> "$GITHUB_STEP_SUMMARY"
-            echo "La compilación y las verificaciones terminaron correctamente." >> "$GITHUB_STEP_SUMMARY"
+            echo "La compilación y las pruebas terminaron correctamente." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "## CI: fallo" >> "$GITHUB_STEP_SUMMARY"
-            echo "La compilación o alguna verificación falló." >> "$GITHUB_STEP_SUMMARY"
+            echo "La compilación o alguna prueba falló." >> "$GITHUB_STEP_SUMMARY"
           fi
