@@ -53,19 +53,31 @@
           "response": []
         },
         {
-          "name": "Consultar equipo",
+          "name": "404: recurso inexistente",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": {
-              "raw": "{{baseUrl}}/api/equipos/{{equipoId}}",
+              "raw": "{{baseUrl}}/api/equipos/999999999",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "api",
                 "equipos",
-                "{{equipoId}}"
+                "999999999"
               ]
             }
           },
@@ -99,6 +111,52 @@
           "response": []
         },
         {
+          "name": "Crear equipo persistente para consulta PostgreSQL",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"serial\":\"{{serialPersistente}}\",\"nombre\":\"Equipo persistente de demostración\",\"ubicacion\":\"Taller G13\",\"activo\":true}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/equipos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "equipos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar equipo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/equipos/{{equipoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "equipos",
+                "{{equipoId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "400: equipo con campos vacíos",
           "request": {
             "method": "POST",
@@ -116,33 +174,6 @@
                   "language": "text"
                 }
               }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/equipos",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "equipos"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Crear equipo persistente para consulta PostgreSQL",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"serial\":\"{{serialPersistente}}\",\"nombre\":\"Equipo persistente de demostración\",\"ubicacion\":\"Taller G13\",\"activo\":true}"
             },
             "url": {
               "raw": "{{baseUrl}}/api/equipos",
@@ -203,56 +234,6 @@
             }
           },
           "response": []
-        },
-        {
-          "name": "Eliminar equipo temporal CRUD",
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/equipos/{{equipoCrudId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "equipos",
-                "{{equipoCrudId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "404: recurso inexistente",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/equipos/999999999",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "equipos",
-                "999999999"
-              ]
-            }
-          },
-          "response": []
         }
       ]
     },
@@ -302,25 +283,6 @@
           "response": []
         },
         {
-          "name": "Consultar técnico",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/tecnicos/{{tecnicoId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "tecnicos",
-                "{{tecnicoId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "Crear técnico",
           "request": {
             "method": "POST",
@@ -348,19 +310,10 @@
           "response": []
         },
         {
-          "name": "Actualizar técnico",
+          "name": "Consultar técnico",
           "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"nombres\":\"Técnico de demostración\",\"email\":\"{{emailTecnico}}\",\"especialidad\":\"Mecánica\",\"activo\":true}"
-            },
+            "method": "GET",
+            "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/tecnicos/{{tecnicoId}}",
               "host": [
@@ -376,10 +329,19 @@
           "response": []
         },
         {
-          "name": "Eliminar técnico",
+          "name": "Actualizar técnico",
           "request": {
-            "method": "DELETE",
-            "header": [],
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombres\":\"Técnico de demostración\",\"email\":\"{{emailTecnico}}\",\"especialidad\":\"Mecánica\",\"activo\":true}"
+            },
             "url": {
               "raw": "{{baseUrl}}/api/tecnicos/{{tecnicoId}}",
               "host": [
@@ -418,30 +380,6 @@
           "response": []
         },
         {
-          "name": "Listar por técnico (JPQL)",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/mantenimientos?tecnicoId={{tecnicoId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "mantenimientos"
-              ],
-              "query": [
-                {
-                  "key": "tecnicoId",
-                  "value": "{{tecnicoId}}"
-                }
-              ]
-            }
-          },
-          "response": []
-        },
-        {
           "name": "Listar pendientes",
           "request": {
             "method": "GET",
@@ -455,25 +393,6 @@
                 "api",
                 "mantenimientos",
                 "pendientes"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Consultar mantenimiento",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{baseUrl}}/api/mantenimientos/{{mantenimientoId}}",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "mantenimientos",
-                "{{mantenimientoId}}"
               ]
             }
           },
@@ -507,19 +426,34 @@
           "response": []
         },
         {
-          "name": "Actualizar mantenimiento",
+          "name": "Listar por técnico (JPQL)",
           "request": {
-            "method": "PUT",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"equipoId\":{{equipoId}},\"tecnicoId\":{{tecnicoId}},\"fechaProgramada\":\"{{fechaProgramada}}\",\"descripcion\":\"Mantenimiento actualizado de demostración\"}"
-            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mantenimientos?tecnicoId={{tecnicoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mantenimientos"
+              ],
+              "query": [
+                {
+                  "key": "tecnicoId",
+                  "value": "{{tecnicoId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar mantenimiento",
+          "request": {
+            "method": "GET",
+            "header": [],
             "url": {
               "raw": "{{baseUrl}}/api/mantenimientos/{{mantenimientoId}}",
               "host": [
@@ -535,10 +469,19 @@
           "response": []
         },
         {
-          "name": "Eliminar mantenimiento",
+          "name": "Actualizar mantenimiento",
           "request": {
-            "method": "DELETE",
-            "header": [],
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"equipoId\":{{equipoId}},\"tecnicoId\":{{tecnicoId}},\"fechaProgramada\":\"{{fechaProgramada}}\",\"descripcion\":\"Mantenimiento actualizado de demostración\"}"
+            },
             "url": {
               "raw": "{{baseUrl}}/api/mantenimientos/{{mantenimientoId}}",
               "host": [
@@ -655,6 +598,33 @@
           "response": []
         },
         {
+          "name": "Crear orden",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"mantenimientoId\":{{mantenimientoId}},\"descripcion\":\"Inspección de rutina\"}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/ordenes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ordenes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Filtrar por equipo y estado (JPQL)",
           "request": {
             "method": "GET",
@@ -694,33 +664,6 @@
                 "api",
                 "ordenes",
                 "{{ordenId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Crear orden",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\"mantenimientoId\":{{mantenimientoId}},\"descripcion\":\"Inspección de rutina\"}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/ordenes",
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "path": [
-                "api",
-                "ordenes"
               ]
             }
           },
@@ -782,7 +725,12 @@
             }
           },
           "response": []
-        },
+        }
+      ]
+    },
+    {
+      "name": "Limpieza (DELETE al final)",
+      "item": [
         {
           "name": "Eliminar orden",
           "request": {
@@ -797,6 +745,63 @@
                 "api",
                 "ordenes",
                 "{{ordenId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar mantenimiento",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mantenimientos/{{mantenimientoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "mantenimientos",
+                "{{mantenimientoId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar técnico",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tecnicos/{{tecnicoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "tecnicos",
+                "{{tecnicoId}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar equipo temporal CRUD",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/equipos/{{equipoCrudId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "equipos",
+                "{{equipoCrudId}}"
               ]
             }
           },
@@ -832,15 +837,15 @@
     },
     {
       "key": "serialPersistente",
-      "value": "EQ-KEEP-VIDEO-20261115-A"
+      "value": ""
     },
     {
       "key": "serialEquipo",
-      "value": "EQ-DEMO-VIDEO-20261115-A"
+      "value": ""
     },
     {
       "key": "emailTecnico",
-      "value": "tecnico-video-20261115@example.edu"
+      "value": ""
     },
     {
       "key": "fechaProgramada",
@@ -849,6 +854,46 @@
     {
       "key": "equipoCrudId",
       "value": ""
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const primera = pm.info.requestName === \"Listar equipos\";",
+          "if (primera || !pm.collectionVariables.get(\"serialEquipo\")) {",
+          "  const id = Date.now().toString(36).toUpperCase();",
+          "  pm.collectionVariables.set(\"serialEquipo\", \"EQ-DEMO-\" + id);",
+          "  pm.collectionVariables.set(\"serialPersistente\", \"EQ-KEEP-\" + id);",
+          "  pm.collectionVariables.set(\"emailTecnico\", \"tecnico-\" + id.toLowerCase() + \"@example.edu\");",
+          "}"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const req = pm.request, code = pm.response.code, name = pm.info.requestName;",
+          "const path = \"/\" + req.url.path.join(\"/\");",
+          "if (req.method === \"POST\" && code === 201) {",
+          "  const id = pm.response.json().id;",
+          "  if (path === \"/api/equipos\") {",
+          "    if (name.includes(\"persistente\")) { pm.collectionVariables.set(\"equipoPersistenteId\", id); pm.collectionVariables.set(\"equipoId\", id); }",
+          "    else pm.collectionVariables.set(\"equipoCrudId\", id);",
+          "  }",
+          "  if (path === \"/api/tecnicos\") pm.collectionVariables.set(\"tecnicoId\", id);",
+          "  if (path === \"/api/mantenimientos\") pm.collectionVariables.set(\"mantenimientoId\", id);",
+          "  if (path === \"/api/ordenes\") pm.collectionVariables.set(\"ordenId\", id);",
+          "}",
+          "const esperado = (name.match(/^(?:Regla )?(\\d{3})[: ]/) || [])[1];",
+          "if (esperado) pm.test(name + \" devuelve \" + esperado, () => pm.response.to.have.status(Number(esperado)));",
+          "else pm.test(name + \" responde 2xx\", () => pm.expect(code).to.be.within(200, 299));"
+        ]
+      }
     }
   ]
 }
