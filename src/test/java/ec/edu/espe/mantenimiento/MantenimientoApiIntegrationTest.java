@@ -185,6 +185,18 @@ class MantenimientoApiIntegrationTest {
     }
 
     @Test
+    void rutasMalFormadasNoDevuelvenErrorInterno() throws Exception {
+        HttpResponse<String> sinId = request("GET", "/api/equipos/", null);
+        assertEquals(404, sinId.statusCode());
+        assertTrue(sinId.body().contains("La ruta solicitada no existe"));
+        HttpResponse<String> idNoNumerico = request("GET", "/api/equipos/abc", null);
+        assertEquals(400, idNoNumerico.statusCode());
+        assertTrue(idNoNumerico.body().contains("id"));
+        HttpResponse<String> metodo = request("PATCH", "/api/equipos", null);
+        assertEquals(405, metodo.statusCode());
+    }
+
+    @Test
     void interceptorAgregaDuracionYRechazaIdentificadorVacio() throws Exception {
         HttpResponse<String> ok = request("GET", "/api/equipos", null);
         assertEquals(200, ok.statusCode());
